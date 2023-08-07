@@ -2,6 +2,6 @@
 set -e
 
 # Pull the Docker image from Docker Hub
-sudo docker pull koli2712/sample-python-flask-service 
+sudo docker pull koli2712/sample-python-flask-service:latest
 # Run the Docker image as a container
-sudo docker run -d -p 5000:5000 koli2712/sample-python-flask-service
+sudo docker run -d -p 5000:5000 koli2712/sample-python-flask-service:latest
