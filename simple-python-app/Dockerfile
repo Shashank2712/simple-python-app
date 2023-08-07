@@ -19,5 +19,5 @@ EXPOSE 5000
 # Set environment variables, if necessary
 # ENV MY_ENV_VAR=value
 
-# Run the Flask application
-CMD ["python", "app.py"]
+# Run the Flask application with nohup and redirect output to a log file
+CMD ["nohup", "python", "app.py", "&>", "output.log"]
