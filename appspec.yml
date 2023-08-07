@@ -1,14 +1,71 @@
 version: 0.0
 os: linux
+files: 
+  - source: /
+    destination: /home/ubuntu
+    overwrite: true
+file_exists_behavior: OVERWRITE
+
+permissions:
+  - object: /home/ubuntu/simple-python-app/scripts
+    pattern: "*.sh"
+    owner: ubuntu
+    group: ubuntu
+    mode: 777
+    setfacl:
+      - "u:ubuntu:rwx"
+      - "u:root:rwx"
+    owner: ubuntu
+    type:
+      - file
+      
+  - object: /home/ubuntu/simple-python-app
+    pattern: "*sets"
+    owner: ubuntu
+    group: ubuntu
+    mode: 777
+    setfacl:
+      - "u:ubuntu:rwx"
+      
+    owner: ubuntu
+    type:
+      - directory
+        
+      
+  - object: /home/ubuntu/simple-python-app
+    pattern: "*.png"
+    owner: ubuntu
+    group: ubuntu
+    mode: 777
+    setfacl:
+      - "u:ubuntu:rwx"
+      
+    owner: ubuntu
+    type:
+      - file
+      
+  
+      
+  - object: /home/ubuntu/simple-python-app
+    pattern: "*.py"
+    owner: ubuntu
+    group: ubuntu
+    mode: 777
+    setfacl:
+      - "u:ubuntu:rwx"
+      
+    owner: ubuntu
+    type:
+      - file
 
 hooks:
-  ApplicationStop:
-    - location: scripts/stop_container.sh
-      timeout: 300
-      runas: root
+      
   AfterInstall:
     - location: scripts/start_container.sh
-      timeout: 300
+      timeout: 60
       runas: root
       
-      
+  ApplicationStop:
+    - location: scripts/stop_container.sh
+      timeout: 60
+      runas: root
